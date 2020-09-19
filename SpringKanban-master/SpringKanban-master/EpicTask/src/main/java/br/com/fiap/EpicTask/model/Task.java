@@ -20,10 +20,8 @@ public class Task {
 	@NotBlank(message = "{task.descricao.vazio}")
 	private String description;
 	
-	@Size(min= 1, max = 3, message = "{task.point.validacao}")
 	private int point;
 
-	@Size(min= 1, max = 3, message = "{task.status.validacao}")
 	private int status;
 	
 	public Long getId() {
