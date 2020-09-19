@@ -8,35 +8,34 @@
 	<body>
 	
 		<div class="content">
-			<h2>Novo usuário</h2>
-			<form action="/user" method="POST" th:object="${user}">
-				<input 
-					name="name" 
-					type="text" 
-					placeholder="Nome Completo"
-					value="Arthur Pereira Machado"
-					th:classappend="${#fields.hasErrors('name')} ? invalid"
+			<h2>Inserir nova tarefa</h2>
+			<form action="/task" method="POST" th:object="${task}">
+				<input
+					name="title"
+					type="text"
+					placeholder="Título da tarefa"
+					th:classappend="${#fields.hasErrors('title')} ? invalid"
 				/>
-				<span th:errors="*{name}"></span>
+				<span th:errors="*{title}"></span>
+					<input
+					name="description"
+					type="text"
+					placeholder="Descrição da tarefa"
+					th:classappend="${#fields.hasErrors('description')} ? invalid"
+				/>
+				<span th:errors="*{description}"></span>
 				
-				<input 
-					name="email" 
-					type="text" 
-					placeholder="E-mail"
-					th:classappend="${#fields.hasErrors('email')} ? invalid"
-				/>
-				<span th:errors="*{email}"></span>
+				<label>Pontos</label>
+				<input type="number" min="1" max="100" id="point" />
+				<input type="range" min="1" max="100" id="range-point" />
 				
-				<input 
-					name="pass" 
-					type="password" 
-					placeholder="Senha" 
-					th:classappend="${#fields.hasErrors('pass')} ? invalid"
-				/>
-				<span th:errors="*{pass}"></span>
+				<label>Situação</label>
+				<input type="number" min="1" max="100" id="point" />
+				<input type="range" min="1" max="100" id="range-status" />
 				
 				<div class="actions">
-					<a href="/user" class="btn">Cancelar</a>
+					<a href="/task" class="btn">Cancelar</a>
+					<a href="/task/delete/ + id" class="btn">Deletar</a>
 					<button class="btn blue">Salvar</button>
 				</div>
 			</form>

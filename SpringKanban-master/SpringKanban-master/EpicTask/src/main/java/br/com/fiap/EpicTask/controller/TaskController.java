@@ -29,8 +29,8 @@ public class TaskController {
 	@GetMapping
 	public ModelAndView tasks() {
 		List<Task> tasks = repository.findAll();
-		ModelAndView modelAndView = new ModelAndView("tasks");
-		modelAndView.addObject("tasks", tasks);
+		ModelAndView modelAndView = new ModelAndView("task");
+		modelAndView.addObject("task", tasks);
 		return modelAndView;
  	}
 	
@@ -40,11 +40,11 @@ public class TaskController {
 			return "task_new";
 		}
 		repository.save(task);
-		attribute.addFlashAttribute("adicionado", "A Task foi criada com sucesso");
+		attribute.addFlashAttribute("message", "A Task foi criada com sucesso");
 		return "redirect:task";
 	}
 	
-	@RequestMapping("Novo")
+	@RequestMapping("new")
 	public String createTask(Task task) {
 		return "task_new";
 	}
@@ -69,7 +69,7 @@ public class TaskController {
 	@RequestMapping("delete/{id}")
 	public String deleteTask(@PathVariable Long id, RedirectAttributes attribute) {
 		repository.deleteById(id);
-		attribute.addFlashAttribute("deletado", "A task foi removida com sucesso");
+		attribute.addFlashAttribute("message", "A task foi removida com sucesso");
 		return "redirect:/task";
 	}
 	
